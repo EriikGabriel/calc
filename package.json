@@ -1,0 +1,20 @@
+{
+  "name": "calc",
+  "version": "1.0.0",
+  "description": "A simple calculator",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc -w"
+  },
+  "keywords": [
+    "Calculator"
+  ],
+  "author": "Erik Gabriel",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.8.2"
+  },
+  "dependencies": {
+    "feather-icons": "^4.29.0"
+  }
+}

@@ -1,0 +1,30 @@
+:root {
+  --page-bg-color: #ddddde;
+  --primary-bg-color: #dbe1ec;
+  --secondary-bg-color: #f8f8f8;
+  --accent-color: #00cab5;
+  --negative-color: #f65667;
+  --primary-text-color: #333333;
+  --secondary-text-color: #74787c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  color: var(--primary-text-color);
+  background-color: var(--page-bg-color);
+}
+
+button {
+  padding: 10px;
+  font-size: medium;
+  background-color: var(--secondary-bg-color);
+  color: var(--accent-color);
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=main.css.map */
