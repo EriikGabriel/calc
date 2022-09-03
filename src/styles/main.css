@@ -16,15 +16,104 @@
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
   color: var(--primary-text-color);
   background-color: var(--page-bg-color);
 }
 
 button {
-  padding: 10px;
-  font-size: medium;
-  background-color: var(--secondary-bg-color);
-  color: var(--accent-color);
   border: none;
   cursor: pointer;
+}
+
+.headings {
+  text-align: center;
+}
+.headings h1 {
+  font-size: 5rem;
+  background: #00c4b0;
+  background: linear-gradient(to bottom, #00c4b0 10%, #008b94 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.headings h2 {
+  font-size: 2rem;
+  color: #008b94;
+}
+
+main {
+  width: 60vw;
+  min-height: 60vh;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 1.2rem;
+}
+main .panel {
+  border-radius: 1.2rem 1.2rem 0px 0px;
+  background-color: var(--primary-bg-color);
+  height: 30%;
+}
+main .panel input {
+  background-color: transparent;
+  font-size: 3rem;
+  width: 100%;
+  height: 50%;
+  padding: 50px 50px;
+  letter-spacing: 5px;
+  text-align: end;
+  border: none;
+  outline: none;
+}
+main .panel div.result {
+  font-weight: bold;
+  text-align: end;
+  font-size: 3rem;
+  padding: 0 50px;
+}
+main .keyboard {
+  border-radius: 0 0 1.2rem 1.2rem;
+  background-color: var(--secondary-bg-color);
+  height: 70%;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  grid-gap: 10px;
+  justify-items: center;
+  padding: 25px 25px;
+}
+main .keyboard button.key {
+  color: var(--primary-text-color);
+  background: transparent;
+  border-radius: 0.75rem;
+  font-size: 1.5rem;
+  width: 100%;
+}
+main .keyboard button.key:hover {
+  transition: all 0.3s;
+  background: rgba(207, 208, 210, 0.3882352941);
+}
+main .keyboard button.func {
+  color: var(--accent-color);
+}
+main .keyboard button.key[name=equals] {
+  color: #ffffff;
+  background: #00c4b0;
+  background: linear-gradient(to bottom, #00c4b0 10%, #008b94 100%);
+  border-radius: 1.5rem;
+  font-size: 2rem;
+  width: 80%;
+  font-weight: bold;
+}
+main .keyboard button.key[name=clear] {
+  color: var(--negative-color);
+}
+
+.developed {
+  font-size: 1rem;
+  color: #008b94;
 }/*# sourceMappingURL=main.css.map */
