@@ -30,6 +30,8 @@ const getPersistedTheme = () => {
     });
 };
 const toggleTheme = () => {
+    const storageTheme = localStorage.getItem("@calc:theme");
+    const activeTheme = storageTheme ? JSON.parse(storageTheme) : whiteTheme;
     const toggledTheme = activeTheme.name === "White" ? darkTheme : whiteTheme;
     Object.keys(toggledTheme).map((key) => {
         document.body.style.setProperty(transformKey(key), toggledTheme[key]);

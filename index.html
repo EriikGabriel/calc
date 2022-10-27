@@ -16,11 +16,13 @@
     <div class="headings">
       <h1>Calc</h1>
       <h2>A simple calculator</h2>
+      <button type="button" id="toggle-button">Toggle Theme</button>
     </div>
+
     <main>
       <div class="panel">
         <input type="text" />
-        <div class="result"></div>
+        <p class="result"></p>
       </div>
       <div class="keyboard">
         <button name="rad" aria-label="rad" class="key func">Rad</button>
@@ -45,7 +47,7 @@
         <button name="4" aria-label="4" class="key">4</button>
         <button name="5" aria-label="5" class="key">5</button>
         <button name="6" aria-label="6" class="key">6</button>
-        <button name="sub" aria-label="sub" class="key func">−</button>
+        <button name="sub" aria-label="sub" class="key func">-</button>
 
         <button name="euler" aria-label="euler" class="key func">e</button>
         <button name="tan" aria-label="tan" class="key func">tan</button>
@@ -56,16 +58,17 @@
         <button name="sum" aria-label="sum" class="key func">+</button>
 
         <button name="answer" aria-label="answer" class="key func">Ans</button>
-        <button name="+/-" aria-label="+/-" class="key func">±</button>
+        <button name="negative power" aria-label="negative power" class="key func"><sup>1</sup>/<sub>x</sub></button>
         <button name="power" aria-label="power" class="key func">x <sup>y</sup></button>
         <button name="dot" aria-label="dot" class="key func">.</button>
         <button name="0" aria-label="0" class="key">0</button>
         <button name="clear" aria-label="clear" class="key func">C</button>
-        <button name="equals" aria-label="equals" class="key">=</button>
+        <button name="equals" aria-label="equals" class="key func">=</button>
       </div>
     </main>
     <p class="developed">Developed by Erik Gabriel</p>
   </body>
 
-  <script src="dist/theme.js"></script>
+  <script src="dist/main.js" type="module"></script>
+  <script src="dist/functions/theme.js"></script>
 </html>

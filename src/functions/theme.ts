@@ -12,7 +12,7 @@ type ThemeType = {
   secondaryTextColor: string;
 };
 
-const buttonToggle = document.getElementById("toggle-button") as HTMLButtonElement;
+const buttonToggle = document.getElementById("toggle-button") as HTMLInputElement;
 
 const getStyle = (element: HTMLElement, style: string) => window.getComputedStyle(element).getPropertyValue(style);
 
@@ -56,11 +56,16 @@ const getPersistedTheme = () => {
 };
 
 const toggleTheme = () => {
+  const storageTheme = localStorage.getItem("@calc:theme");
+  const activeTheme: ThemeType = storageTheme ? JSON.parse(storageTheme) : whiteTheme;
+
   const toggledTheme: ThemeType = activeTheme.name === "White" ? darkTheme : whiteTheme;
 
   Object.keys(toggledTheme).map((key) => {
     document.body.style.setProperty(transformKey(key), toggledTheme[key as keyof typeof toggledTheme]);
   });
+
+  // buttonToggle.innerText = "Mudar para o tema " + activeTheme.name;
 
   localStorage.setItem("@calc:theme", JSON.stringify(toggledTheme));
 };
