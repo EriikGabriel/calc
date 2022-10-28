@@ -11,7 +11,7 @@ let ans = "";
 const resolveFunctions = (exp: string): string => {
   let funcResult = exp;
 
-  const funcRegex = /(?<func>cos|sin|tan|log|ln|√)\((?<value>[^\)]*)\)*/gm;
+  const funcRegex = /(?<func>cos|arccos|sin|arcsin|tan|arctan|log|ln|√)\((?<value>[^\)]*)\)*/gm;
   let funcRegexResult: RegExpExecArray | null;
 
   let res = null;
@@ -27,11 +27,20 @@ const resolveFunctions = (exp: string): string => {
         case "sin":
           res = Math.sin(Number(evalResult));
           break;
+        case "arcsin":
+          res = Math.asin(Number(evalResult));
+          break;
         case "cos":
           res = Math.cos(Number(evalResult));
           break;
+        case "arccos":
+          res = Math.acos(Number(evalResult));
+          break;
         case "tan":
           res = Math.tan(Number(evalResult));
+          break;
+        case "arctan":
+          res = Math.atan(Number(evalResult));
           break;
         case "log":
           res = Math.log10(Number(evalResult));
@@ -162,6 +171,26 @@ keyboardButtons?.forEach((button) => {
       case "deg":
         break;
       case "inverse":
+        if (!buttonElement.classList.contains("active")) {
+          buttonElement.classList.add("active");
+          (document.querySelector(".keyboard button[name='sin']") as HTMLButtonElement).innerHTML = "sin<sup>-1</sup>";
+          (document.querySelector(".keyboard button[name='cos']") as HTMLButtonElement).innerHTML = "cos<sup>-1</sup>";
+          (document.querySelector(".keyboard button[name='tan']") as HTMLButtonElement).innerHTML = "tan<sup>-1</sup>";
+          (document.querySelector(".keyboard button[name='natural logarithm']") as HTMLButtonElement).innerHTML =
+            "e<sup>x</sup>";
+          (document.querySelector(".keyboard button[name='logarithm']") as HTMLButtonElement).innerHTML =
+            "10<sup>x</sup>";
+          (document.querySelector(".keyboard button[name='square root']") as HTMLButtonElement).innerHTML =
+            "x<sup>2</sup>";
+        } else {
+          buttonElement.classList.remove("active");
+          (document.querySelector(".keyboard button[name='sin']") as HTMLButtonElement).innerHTML = "sin";
+          (document.querySelector(".keyboard button[name='cos']") as HTMLButtonElement).innerHTML = "cos";
+          (document.querySelector(".keyboard button[name='tan']") as HTMLButtonElement).innerHTML = "tan";
+          (document.querySelector(".keyboard button[name='natural logarithm']") as HTMLButtonElement).innerHTML = "ln";
+          (document.querySelector(".keyboard button[name='logarithm']") as HTMLButtonElement).innerHTML = "log";
+          (document.querySelector(".keyboard button[name='square root']") as HTMLButtonElement).innerHTML = "√";
+        }
         break;
       case "equals":
         if (panelInputElement.value) {

@@ -1,19 +1,20 @@
 export class Keyboard {
     outputKey(keyElement) {
         if (!/^\d+$/.test(keyElement.name)) {
+            const isInverse = document.querySelector(".keyboard button[name='inverse']").classList.contains("active");
             switch (keyElement.name) {
                 case "sin":
-                    return "sin(";
+                    return isInverse ? "arcsin(" : "sin(";
                 case "cos":
-                    return "cos(";
+                    return isInverse ? "arccos(" : "cos(";
                 case "tan":
-                    return "tan(";
+                    return isInverse ? "arctan(" : "tan(";
                 case "natural logarithm":
-                    return "ln(";
+                    return isInverse ? "e^(" : "ln(";
                 case "logarithm":
-                    return "log(";
+                    return isInverse ? "(10)^(" : "log(";
                 case "square root":
-                    return "√(";
+                    return isInverse ? "^(2)" : "√(";
                 case "fatorial":
                     return "!";
                 case "power":
