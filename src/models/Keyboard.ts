@@ -12,10 +12,12 @@ export class Keyboard {
           return "ln(";
         case "logarithm":
           return "log(";
+        case "square root":
+          return "√(";
         case "fatorial":
           return "!";
         case "power":
-          return "^";
+          return "^(";
         case "negative power":
           return "^(-1)";
         default:
