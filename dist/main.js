@@ -14,24 +14,25 @@ const resolveFunctions = (exp) => {
         const value = funcRegexResult.groups?.value;
         const evalResult = evalStringExp(value ?? "");
         if (evalResult) {
+            const angleMode = document.querySelector(".keyboard .active-angle-mode").name;
             switch (func) {
                 case "sin":
-                    res = Math.sin(Number(evalResult));
+                    res = angleMode === "rad" ? Math.sin(Number(evalResult)) : Math.sin((Number(evalResult) * Math.PI) / 180);
                     break;
                 case "arcsin":
-                    res = Math.asin(Number(evalResult));
+                    res = angleMode === "rad" ? Math.asin(Number(evalResult)) : Math.asin((Number(evalResult) * Math.PI) / 180);
                     break;
                 case "cos":
-                    res = Math.cos(Number(evalResult));
+                    res = angleMode === "rad" ? Math.cos(Number(evalResult)) : Math.cos((Number(evalResult) * Math.PI) / 180);
                     break;
                 case "arccos":
-                    res = Math.acos(Number(evalResult));
+                    res = angleMode === "rad" ? Math.acos(Number(evalResult)) : Math.acos((Number(evalResult) * Math.PI) / 180);
                     break;
                 case "tan":
-                    res = Math.tan(Number(evalResult));
+                    res = angleMode === "rad" ? Math.tan(Number(evalResult)) : Math.tan((Number(evalResult) * Math.PI) / 180);
                     break;
                 case "arctan":
-                    res = Math.atan(Number(evalResult));
+                    res = angleMode === "rad" ? Math.atan(Number(evalResult)) : Math.atan((Number(evalResult) * Math.PI) / 180);
                     break;
                 case "log":
                     res = Math.log10(Number(evalResult));
@@ -128,8 +129,12 @@ keyboardButtons?.forEach((button) => {
                 panelInputElement.classList.remove("result-highlight");
                 break;
             case "rad":
+                buttonElement.classList.add("active-angle-mode");
+                document.querySelector(".keyboard button[name='deg']").classList.remove("active-angle-mode");
                 break;
             case "deg":
+                buttonElement.classList.add("active-angle-mode");
+                document.querySelector(".keyboard button[name='rad']").classList.remove("active-angle-mode");
                 break;
             case "inverse":
                 if (!buttonElement.classList.contains("active")) {

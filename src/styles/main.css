@@ -122,6 +122,10 @@ main .keyboard button.key:hover {
   transition: all 0.3s;
   background: rgba(207, 208, 210, 0.3882352941);
 }
+main .keyboard button.key.active-angle-mode {
+  background: var(--accent-color);
+  color: var(--page-bg-color);
+}
 main .keyboard button.func {
   color: var(--accent-color);
 }

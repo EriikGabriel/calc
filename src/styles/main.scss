@@ -136,6 +136,11 @@ main {
         transition: all 0.3s;
         background: #cfd0d263;
       }
+
+      &.active-angle-mode {
+        background: var(--accent-color);
+        color: var(--page-bg-color);
+      }
     }
 
     button.func {
