@@ -128,6 +128,7 @@ keyboardButtons?.forEach((button) => {
                 panelResultElement.innerText = "";
                 panelResultElement.classList.remove("result-highlight");
                 panelInputElement.classList.remove("result-highlight");
+                panelInputElement.focus();
                 break;
             case "rad":
                 buttonElement.classList.add("active-angle-mode");
