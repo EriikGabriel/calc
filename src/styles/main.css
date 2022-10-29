@@ -79,7 +79,9 @@ main .panel input {
   text-align: end;
   border: none;
   outline: none;
+  pointer-events: fill;
   transition: all 0.5s;
+  caret-color: transparent;
 }
 main .panel input.result-highlight {
   padding: 40px 50px;
@@ -124,7 +126,7 @@ main .keyboard button.key:hover {
 }
 main .keyboard button.key.active-angle-mode {
   background: var(--accent-color);
-  color: var(--page-bg-color);
+  color: var(--secondary-bg-color);
 }
 main .keyboard button.func {
   color: var(--accent-color);

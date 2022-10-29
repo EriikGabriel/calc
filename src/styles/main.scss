@@ -86,8 +86,9 @@ main {
       text-align: end;
       border: none;
       outline: none;
-
+      pointer-events: fill;
       transition: all 0.5s;
+      caret-color: transparent;
 
       &.result-highlight {
         padding: 40px 50px;
@@ -139,7 +140,7 @@ main {
 
       &.active-angle-mode {
         background: var(--accent-color);
-        color: var(--page-bg-color);
+        color: var(--secondary-bg-color);
       }
     }
 

@@ -8,6 +8,8 @@ const keyboard = new Keyboard();
 
 let ans = "";
 
+document.addEventListener("DOMContentLoaded", () => panelInputElement.focus());
+
 const resolveFunctions = (exp: string): string => {
   let funcResult = exp;
 
@@ -143,13 +145,11 @@ const resolveCalc = (calc: string): string => {
   calcResult = resolveOtherOperations(calcResult);
   calcResult = resolveFunctions(calcResult);
 
-  // console.log(`${calcResult} = ${evalStringExp(calcResult)}`);
-
   return evalStringExp(calcResult) ? String(evalStringExp(calcResult)) : "";
 };
 
 keyboardButtons?.forEach((button) => {
-  button.addEventListener("click", (e: Event) => {
+  button.addEventListener("click", (e) => {
     const buttonElement = e.currentTarget as HTMLButtonElement;
 
     if (panelResultElement.classList.contains("result-highlight")) {
@@ -221,6 +221,64 @@ keyboardButtons?.forEach((button) => {
 
     if (result) panelResultElement.innerText = `= ${result}`;
   });
+});
+
+panelInputElement.addEventListener("keypress", (e) => {
+  const keyPressed = e.key;
+
+  if (panelInputElement.value === "0" && /^\d+$/.test(keyPressed)) panelInputElement.value = "";
+
+  switch (keyPressed) {
+    case "*":
+      e.preventDefault();
+      panelInputElement.value += "×";
+      break;
+    case "/":
+      e.preventDefault();
+      panelInputElement.value += "÷";
+      break;
+    case ",":
+      e.preventDefault();
+      panelInputElement.value += ".";
+      break;
+    case "Enter":
+    case "=":
+      e.preventDefault();
+      if (panelInputElement.value) {
+        panelResultElement.classList.add("result-highlight");
+        panelInputElement.classList.add("result-highlight");
+
+        ans = resolveCalc(panelInputElement.value);
+
+        if (ans) panelResultElement.innerText = `= ${ans}`;
+      }
+      break;
+  }
+});
+
+panelInputElement.addEventListener("keyup", (e) => {
+  const result = panelInputElement.value !== "0" ? resolveCalc(panelInputElement.value) : "";
+
+  if (result) panelResultElement.innerText = `= ${result}`;
+});
+
+panelInputElement.addEventListener("keydown", (e) => {
+  const inputLength = panelInputElement.value.length;
+
+  if (panelInputElement.setSelectionRange) {
+    panelInputElement.focus();
+    panelInputElement.setSelectionRange(inputLength, inputLength);
+  }
+
+  if (e.key === "Backspace" && panelInputElement.value.length === 1) {
+    e.preventDefault();
+
+    if (panelInputElement.value !== "0") {
+      panelInputElement.value = "0";
+    }
+
+    panelResultElement.innerText = "";
+  }
 });
 
 const evalStringExp = (exp: string): Number | null => {
