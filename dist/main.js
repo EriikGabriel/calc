@@ -5,6 +5,14 @@ const keyboardButtons = document.querySelectorAll(".keyboard button");
 const keyboard = new Keyboard();
 let ans = "";
 document.addEventListener("DOMContentLoaded", () => panelInputElement.focus());
+const evalStringExp = (exp) => {
+    try {
+        return Number(eval(exp));
+    }
+    catch (error) {
+        return null;
+    }
+};
 const resolveFunctions = (exp) => {
     let funcResult = exp;
     const funcRegex = /(?<func>cos|arccos|sin|arcsin|tan|arctan|log|ln|√)\((?<value>[^\)]*)\)*/gm;
@@ -183,6 +191,11 @@ keyboardButtons?.forEach((button) => {
 });
 panelInputElement.addEventListener("keypress", (e) => {
     const keyPressed = e.key;
+    if (panelResultElement.classList.contains("result-highlight")) {
+        panelInputElement.value = "";
+        panelResultElement.classList.remove("result-highlight");
+        panelInputElement.classList.remove("result-highlight");
+    }
     if (panelInputElement.value === "0" && /^\d+$/.test(keyPressed))
         panelInputElement.value = "";
     switch (keyPressed) {
@@ -230,11 +243,3 @@ panelInputElement.addEventListener("keydown", (e) => {
         panelResultElement.innerText = "";
     }
 });
-const evalStringExp = (exp) => {
-    try {
-        return Number(eval(exp));
-    }
-    catch (error) {
-        return null;
-    }
-};
